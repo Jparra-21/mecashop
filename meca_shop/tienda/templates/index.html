@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="{% static 'img/mecareal2.png' %}" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-list-ul" style="color: #ffffff;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#page-plan">Planes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#page-about">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-page">Contacto</a>
+                    </li>           
+                </ul>
+                <ul class="nav-drop">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% if user.is_authenticated %}
+                            {{ user.username }}
+                        {% else %}
+                            Cuenta
+                        {% endif %}
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% if user.is_authenticated %}
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                                <li><a class="dropdown-item" href="{% url 'carrito' %}">Carrito de compras</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesion</a></li>
+                                <li><a class="dropdown-item" href="{% url 'register' %}">Registrarse</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-s">
+        <section class="container-section">
+            <h3 class="welcome">Bienvenido a</h3>
+            <h1 class="title-main">LA SOLUCIÓN DE TUS PROBLEMAS <br><strong class="title-meca">MECA-SHOP</strong></h1>
+            <p class="descrip-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            <a class="start-main" href="{% url 'login' %}">Comencemos</a>
+        </section>
+        <figure class="container-img-main">
+            <img src="{% static 'img/img-main.png' %}" alt="#">
+        </figure>
+    </div>
+    <div class="second-page-main">
+        <div style="overflow: hidden;">
+            <svg preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #060711; width: 100%; height: 75px;">
+                <path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" opacity=".25"/>
+                <path d="M0 0v15.81c13 21.11 27.64 41.05 47.69 56.24C99.41 111.27 165 111 224.58 91.58c31.15-10.15 60.09-26.07 89.67-39.8 40.92-19 84.73-46 130.83-49.67 36.26-2.85 70.9 9.42 98.6 31.56 31.77 25.39 62.32 62 103.63 73 40.44 10.79 81.35-6.69 119.13-24.28s75.16-39 116.92-43.05c59.73-5.85 113.28 22.88 168.9 38.84 30.2 8.66 59 6.17 87.09-7.5 22.43-10.89 48-26.93 60.65-49.24V0z" opacity=".5"/>
+                <path d="M0 0v5.63C149.93 59 314.09 71.32 475.83 42.57c43-7.64 84.23-20.12 127.61-26.46 59-8.63 112.48 12.24 165.56 35.4C827.93 77.22 886 95.24 951.2 90c86.53-7 172.46-45.71 248.8-84.81V0z"/>
+            </svg>
+        </div>   
+        <div class="container mt-4">
+            <div id="carouselExampleIndicators" class="carousel slide mx-auto" data-bs-ride="carousel" style="max-width: 800px;">
+                <div class="carousel-indicators">
+                    {% for i in image_urls %}
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+                    {% endfor %}
+                </div>
+                <div class="carousel-inner">
+                    {% for image_url in image_urls %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ image_url }}" class="d-block w-100" alt="...">
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <article class="second-page-title" id="page-plan">
+            <h3 class="title-precio" id="title-precio">Precios</h3>
+            <h2 class="title-plan">Escoge el plan que más se acomode a ti.</h2>
+            <p class="title-descrip-plan">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </article>
+        <div class="container">
+            <div class="row">
+                {% for suscripcion in suscripciones %}
+                <div class="col-sm">
+                    <article class="card">
+                        <h3 class="title-card">{{ suscripcion.nombre }}</h3>
+                        <h4 class="title price-plan">${{ suscripcion.precio }}</h4>
+                        <p class="title-user">Un usuario</p>
+                        <div class="container-content-plan">
+                            <div class="access-plan">
+                                <i class="fa-solid fa-circle-check" style="color: #00eefd;"></i>
+                                <p class="descrip-content-plan">{{ suscripcion.descripcion }}</p>
+                            </div>
+                        </div>
+                        <button class="btn-contratar-park"><a href="{% url 'comprar_suscripcion' suscripcion.id %}">Contratar</a></button>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container-about" id="page-about">
+        <h2 class="title-about" id="title-about">Sobre Nosotros</h2>
+        <p class="descrip-about">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro temporibus consectetur hic maxime voluptatibus possimus commodi libero quas id magnam veniam molestiae, asperiores, qui nulla accusantium nesciunt ex? Voluptate, sint? Laboriosam voluptate maiores, quis, architecto repellendus quae doloremque dignissimos cupiditate minus delectus ducimus, iusto eius! Minima ipsam, id obcaecati facilis atque veniam perferendis natus dolorum modi eveniet ut perspiciatis numquam. Ea repellendus esse eaque sit placeat rem natus voluptates vitae sequi iste excepturi autem tempore eos cumque ex et corrupti labore, veritatis ratione. Consequatur non corrupti labore excepturi. Facere, nostrum. Vero minus, corrupti quisquam ipsum officia quo assumenda non provident enim, id odio saepe nam incidunt doloremque odit deleniti dolore, vel suscipit facilis velit dignissimos aliquid pariatur sit laudantium. Nam! Vel in, dolorem explicabo pariatur, eligendi mollitia consequuntur error vero dolor, necessitatibus beatae similique nisi dolorum cumque illum ad nesciunt ipsam culpa unde laborum! Porro aliquid voluptas illum ea nostrum?<br />Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro temporibus consectetur hic maxime voluptatibus possimus commodi libero quas id magnam veniam molestiae, asperiores, qui nulla accusantium nesciunt ex? Voluptate, sint? Laboriosam voluptate maiores, quis, architecto repellendus quae doloremque dignissimos cupiditate minus delectus ducimus, iusto eius! Minima ipsam, id obcaecati facilis atque veniam perferendis natus dolorum modi eveniet ut perspiciatis numquam. Ea repellendus esse eaque sit placeat rem natus voluptates vitae sequi iste excepturi autem tempore eos cumque ex et corrupti labore, veritatis ratione. Consequatur non corrupti labore excepturi. Facere, nostrum. Vero minus, corrupti quisquam ipsum officia quo assumenda non provident enim, id odio saepe nam incidunt doloremque odit deleniti dolore, vel suscipit facilis velit dignissimos aliquid pariatur sit laudantium. Nam! Vel in, dolorem explicabo pariatur, eligendi mollitia consequuntur error vero dolor, necessitatibus beatae similique nisi dolorum cumque illum ad nesciunt ipsam culpa unde laborum! Porro aliquid voluptas illum ea nostrum?</p>
+    </div>
+    <div class="third-page-main" id="contact-page">
+        <div class="page-divisor">
+            <div style="overflow: hidden;">
+                <svg preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #D1D1D1; width: 400%; height: 167px;">
+                    <path d="M1200 120L0 16.48V0h1200v120z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="contact-wrapper">
+            <div class="contact-form">
+                <h3 class="title">Enviar mensaje.</h3>
+                <form action="">
+                    <p>
+                        <label for="fullname-contact" class="fullname">Nombre Completo</label>
+                        <input type="text" name="fullname" id="fullname-contact">
+                    </p>
+                    <p>
+                        <label for="email-contact" class="email">Correo Electronico</label>
+                        <input type="email" name="email-contact" id="email-contact">
+                    </p>
+                    <p>
+                        <label for="phone-contact" class="phone">Telefono</label>
+                        <input type="tel" name="phone" id="phone-contact">
+                    </p>
+                    <p>
+                        <label for="affair-contact" class="affair">Asunto</label>
+                        <input type="text" name="affair" id="affair-contact">
+                    </p>
+                    <p class="block">
+                        <label for="message-contact" class="message">Mensaje</label>
+                        <textarea name="message" id="message-contact" rows="3"></textarea>
+                    </p>
+                    <p class="block">
+                        <button type="submit">Enviar mensaje</button>
+                    </p>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h4 class="title-info">Contacto</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i> Lorem ipsum</li>
+                    <li><i class="fa-solid fa-phone" style="color: #ffffff;"></i> +569 4353 3454</li>
+                    <li><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> Lorem@ipsum.com</li>
+                </ul>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est, architecto molestias numquam nesciunt ad ea accusamus error. Molestias eaque ullam aliquid et aperiam minus magni esse. Nisi, eum cumque.</p>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-page">
+        <div class="content-footer">
+            <h4 class="text-company">© 2024 Company, Inc</h4>
+            <ul class="footer-social-medias">
+                <li class="social-media">
+                    <a href="https://web.whatsapp.com/" class="link-social-media">
+                        <i class="fa-brands fa-whatsapp" style="color: #a0a0a0;"></i>
+                    </a>
+                </li>
+                <li class="social-media">
+                    <a href="https://www.facebook.com/?locale=es_LA" class="link-social-media">
+                        <i class="fa-brands fa-facebook" style="color: #a0a0a0;"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

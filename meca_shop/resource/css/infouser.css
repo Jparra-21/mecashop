@@ -1,0 +1,190 @@
+body {
+    background-color: #060711;
+    font-family: 'Josefin Sans';
+}
+
+nav .container-fluid {
+    margin: 1.5% 9%;
+    border-bottom: 1px solid gray;
+}
+
+.navbar-brand {
+    width: 200px;
+}
+
+.navbar-brand img {
+    width: 100%;
+}
+
+.navbar-collapse {
+    justify-content: space-between;
+    font-size: 24px;
+    font-size: clamp(20px, 1.25vw, 24px);
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    font-weight: 100;
+}
+
+.nav-drop {
+    padding-left: 0;
+}
+
+.nav-drop .nav-item{
+    list-style: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: #F02D3A;
+    margin-left: 0;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.navbar-toggler {
+    background-color: #F02D3A;
+}
+
+.navbar-toggler-icon {
+    font-size: 15px;
+    color: white;
+}
+
+.container-main .container-infouser {
+    max-width: 700px;
+    background-color: #0E132D;
+    color: white;
+    border-radius: 20px;
+    margin: 80px auto;
+}
+
+.container-main .container-infouser .title-infouser {
+    text-align: center;
+    padding: 10px;
+}
+
+.container-main .container-infouser .title-infouser h4 {
+    padding: 20px 0 10px;
+}
+
+.container-main .container-infouser form {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.container-main .container-infouser form input, 
+.container-main .container-infouser form button {
+    width: 100%;
+}
+
+.container-main .container-infouser form p {
+    padding: 0 10px;
+}
+
+.container-main .container-infouser .block {
+    grid-column: 1 / 3;
+}
+
+.container-main .container-infouser form .empleados-infouser input {
+    width: 20%;
+    padding: 0 10px;
+}
+
+.container-main .container-infouser form .checkbox-infouser {
+    display: flex;
+}
+
+.container-main .container-infouser form .checkbox-infouser input {
+    width: 15px;
+    margin: 0 10px;
+}
+.container-main .container-infouser form .checkbox-infouser label {
+    display: flex;
+    align-items: center;
+}
+
+.container-main .container-infouser form input {
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: 1px solid #161B35;
+    color: white;
+    font-weight: 300;
+}
+
+.container-main .container-infouser form button {
+    background-color: #F02D3A;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    margin: 20px 0 0 0;
+    font-weight: 300;
+}
+
+.footer-page {
+    margin: 1.5% 9%;   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #383A50;
+    padding: 30px 40px 0;  
+    margin-top: 50px;
+}
+
+.footer-page .text-company {
+    color: #D9D9D9;
+    font-size: clamp(12px, 1.146vw, 22px);
+    font-weight: 300;
+    text-align:center;  
+}
+
+.footer-page .footer-social-medias {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-page .footer-social-medias .social-media .link-social-media {
+    font-size: clamp(20px, 1.146vw, 30px);
+    text-decoration: none;
+}
+
+.footer-page .footer-social-medias .social-media {
+    padding: 0 10px;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-control input {
+    border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-size: 12px;
+	padding: 10px;
+	width: 100%;
+}
+
+.input-control input:focus {
+    outline: 0;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
+}   
